@@ -2,14 +2,14 @@ defmodule SSHEx.ConfigurableClientKeys do
   @moduledoc ~S"""
   Provides public key behavior for SSH clients.
 
-  valid options: 
+  valid options:
     - `key`: `IO.device` providing the ssh key (required)
     - `known_hosts`: `IO.device` providing the known hosts list (required)
-    - `accept_hosts`: `boolean` silently accept and add new hosts to the known hosts. By default only known hosts will be accepted. 
+    - `accept_hosts`: `boolean` silently accept and add new hosts to the known hosts. By default only known hosts will be accepted.
   `
   SSHEx.connect(
-      ip: to_charlist(hostname), 
-      user: to_charlist(username), 
+      ip: to_charlist(hostname),
+      user: to_charlist(username),
       key_cb: {SSHEx.ConfigurableClientKeys, [
         key: <IO.device>,
         known_hosts: <IO.device> ]}
@@ -20,8 +20,8 @@ defmodule SSHEx.ConfigurableClientKeys do
   `
   cb_module = SSHEx.ConfigurableClientKeys.get_cb_module(key_file: "path/to/keyfile", known_hosts_file: "path_to_known_hostsFile", accept_hosts: false)
   SSHEx.connect(
-      ip: to_charlist(hostname), 
-      user: to_charlist(username), 
+      ip: to_charlist(hostname),
+      user: to_charlist(username),
       key_cb: cb_module
       )
   `
